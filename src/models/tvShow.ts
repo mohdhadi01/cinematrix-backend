@@ -5,24 +5,6 @@ interface Genre {
   name?: string;
 }
 
-interface ProductionCompany {
-  id?: number;
-  logo_path?: string;
-  name?: string;
-  origin_country?: string;
-}
-
-interface ProductionCountry {
-  iso_3166_1?: string;
-  name?: string;
-}
-
-interface SpokenLanguage {
-  english_name?: string;
-  iso_639_1?: string;
-  name?: string;
-}
-
 interface Cast {
   adult?: boolean;
   gender?: number;
@@ -74,9 +56,6 @@ interface TVShow extends Document {
   original_language?: string;
   original_name?: string;
   popularity?: number;
-  production_companies?: ProductionCompany[];
-  production_countries?: ProductionCountry[];
-  spoken_languages?: SpokenLanguage[];
   credits?: {
     cast?: Cast[];
   };

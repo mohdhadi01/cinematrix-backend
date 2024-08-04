@@ -7,8 +7,9 @@ const express_1 = __importDefault(require("express"));
 const movies_1 = __importDefault(require("./routes/movies"));
 const tvShows_1 = __importDefault(require("./routes/tvShows"));
 const DBconnect_1 = __importDefault(require("./DBconnect"));
+require('dotenv').config();
 const app = (0, express_1.default)();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 app.use(express_1.default.json()); // Middleware to parse JSON
 // Connect to the database
 (0, DBconnect_1.default)();

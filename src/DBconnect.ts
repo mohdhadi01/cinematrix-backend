@@ -1,6 +1,9 @@
 import mongoose from 'mongoose';
+require('dotenv').config();
 
-const uri = "mongodb+srv://hadi5043032:U3PmA1HrE4UkKjD4@testnet.hrh6set.mongodb.net/?retryWrites=true&w=majority";
+const user = process.env.DB_USER;
+const password = process.env.DB_PASSWORD;
+const uri = `mongodb+srv://${user}:${password}@testnet.hrh6set.mongodb.net/?retryWrites=true&w=majority`;
 
 async function connectToDatabase() {
   try {
