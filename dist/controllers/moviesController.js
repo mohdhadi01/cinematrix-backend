@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getMovieDetails = exports.getTrendingMovies = void 0;
+exports.createMovie = exports.getMovieDetails = exports.getTrendingMovies = void 0;
 const movie_1 = __importDefault(require("../models/movie"));
 const getTrendingMovies = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -40,3 +40,15 @@ const getMovieDetails = (req, res) => __awaiter(void 0, void 0, void 0, function
     }
 });
 exports.getMovieDetails = getMovieDetails;
+const createMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const movie = new movie_1.default(req.body);
+        const savedMovie = yield movie.save();
+        res.status(201).json(savedMovie);
+    }
+    catch (error) {
+        console.error('Error creating movie:', error);
+        res.status(400).json({ error });
+    }
+});
+exports.createMovie = createMovie;

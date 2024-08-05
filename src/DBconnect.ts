@@ -9,7 +9,7 @@ async function connectToDatabase() {
   try {
     await mongoose.connect(uri, {
       serverApi: {
-        version: '1', // Use the appropriate ServerApiVersion
+        version: '1',
         strict: true,
         deprecationErrors: true,
       }

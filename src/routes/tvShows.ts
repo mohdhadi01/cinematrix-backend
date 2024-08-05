@@ -3,7 +3,7 @@ import { getTopRatedTvShows, getTvShowDetails } from '../controllers/tvShowsCont
 
 const router = Router();
 
-router.get('/top-rated', getTopRatedTvShows); // Route to get all TV shows
-router.get('/:tvShowId', getTvShowDetails); // Route to get a specific TV show by ID
+router.get('/top-rated', getTopRatedTvShows); 
+router.get('/:tvShowId', getTvShowDetails); 
 
 export default router;

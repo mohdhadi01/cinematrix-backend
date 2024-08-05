@@ -7,12 +7,12 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT ;
 
-app.use(express.json()); // Middleware to parse JSON
+app.use(express.json()); 
 
-// Connect to the database
+
 connectToDatabase();
 
-// Middleware and routes setup here
+
 app.use('/movies', moviesRouter);
 app.use('/tv-shows', tvShowsRouter);
 
