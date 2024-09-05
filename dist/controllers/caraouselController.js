@@ -12,31 +12,28 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getTvShowDetails = exports.getTopRatedTvShows = void 0;
-const tvShow_1 = __importDefault(require("../models/tvShow"));
-const getTopRatedTvShows = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.createCarousel = exports.getCarousel = void 0;
+const carousel_1 = __importDefault(require("../models/carousel"));
+const getCarousel = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const tvShows = yield tvShow_1.default.find();
-        res.json(tvShows);
+        const carouselList = yield carousel_1.default.find();
+        res.send(carouselList);
     }
     catch (error) {
-        console.error('Error fetching TV shows:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        console.error("Error fetching movies:", error);
+        res.status(500).json({ error: "Internal Server Error" });
     }
 });
-exports.getTopRatedTvShows = getTopRatedTvShows;
-const getTvShowDetails = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { tvShowId } = req.params;
+exports.getCarousel = getCarousel;
+const createCarousel = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const tvShow = yield tvShow_1.default.findById(tvShowId);
-        if (!tvShow) {
-            return res.status(404).json({ error: 'TV show not found' });
-        }
-        res.json(tvShow);
+        const carousels = req.body;
+        const savedCarousels = yield carousel_1.default.insertMany(carousels);
+        res.status(201).json(savedCarousels);
     }
     catch (error) {
-        console.error('Error fetching TV show details:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        console.error("Error creating movie:", error);
+        res.status(400).json({ error });
     }
 });
-exports.getTvShowDetails = getTvShowDetails;
+exports.createCarousel = createCarousel;

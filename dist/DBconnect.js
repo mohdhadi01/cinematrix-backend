@@ -22,7 +22,7 @@ function connectToDatabase() {
         try {
             yield mongoose_1.default.connect(uri, {
                 serverApi: {
-                    version: '1', // Use the appropriate ServerApiVersion
+                    version: '1',
                     strict: true,
                     deprecationErrors: true,
                 }

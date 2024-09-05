@@ -16,27 +16,27 @@ exports.createMovie = exports.getMovieDetails = exports.getTrendingMovies = void
 const movie_1 = __importDefault(require("../models/movie"));
 const getTrendingMovies = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const movies = yield movie_1.default.find(); // Retrieve all movies from the database
+        const movies = yield movie_1.default.find();
         res.json(movies);
     }
     catch (error) {
-        console.error('Error fetching movies:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        console.error("Error fetching movies:", error);
+        res.status(500).json({ error: "Internal Server Error" });
     }
 });
 exports.getTrendingMovies = getTrendingMovies;
 const getMovieDetails = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { movieId } = req.params;
     try {
-        const movie = yield movie_1.default.findById(movieId); // Retrieve movie by ID from the database
+        const movie = yield movie_1.default.findById(movieId);
         if (!movie) {
-            return res.status(404).json({ error: 'Movie not found' });
+            return res.status(404).json({ error: "Movie not found" });
         }
         res.json(movie);
     }
     catch (error) {
-        console.error('Error fetching movie details:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        console.error("Error fetching movie details:", error);
+        res.status(500).json({ error: "Internal Server Error" });
     }
 });
 exports.getMovieDetails = getMovieDetails;
@@ -47,7 +47,7 @@ const createMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         res.status(201).json(savedMovie);
     }
     catch (error) {
-        console.error('Error creating movie:', error);
+        console.error("Error creating movie:", error);
         res.status(400).json({ error });
     }
 });
