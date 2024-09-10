@@ -28,6 +28,12 @@ exports.getCarousel = getCarousel;
 const createCarousel = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const carousels = req.body;
+        const titles = carousels.map((item) => item === null || item === void 0 ? void 0 : item.title);
+        const existingCarousels = yield carousel_1.default.find({ title: { $in: titles } });
+        const newCarousels = carousels.filter((item) => !existingCarousels.some((existing) => existing.title === item.title));
+        if (newCarousels.length === 0) {
+            return res.status(400).json({ error: "No new unique movies to add." });
+        }
         const savedCarousels = yield carousel_1.default.insertMany(carousels);
         res.status(201).json(savedCarousels);
     }

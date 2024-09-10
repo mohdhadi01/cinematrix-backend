@@ -3,6 +3,8 @@ import moviesRouter from "./routes/movies";
 import tvShowsRouter from "./routes/tvShows";
 import connectToDatabase from "./DBconnect";
 import caraouselRouter from "./routes/Carousel";
+import moviesCollectionRouter from "./routes/moviesCollection";
+import tvShowsCollectionRouter from "./routes/tvShowsCollection";
 require("dotenv").config();
 
 const app = express();
@@ -13,6 +15,8 @@ app.use(express.json());
 connectToDatabase();
 
 app.use("/movies", moviesRouter);
+app.use("/movies-collection", moviesCollectionRouter);
+app.use("/tvShows-collection", tvShowsCollectionRouter);
 app.use("/tv-shows", tvShowsRouter);
 app.use("/get-carousel", caraouselRouter);
 
