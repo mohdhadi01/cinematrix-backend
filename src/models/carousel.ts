@@ -1,6 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 interface Carousel {
+  movieId: Number;
   title: String;
   overview: String;
   rating: String;
@@ -9,6 +10,7 @@ interface Carousel {
 }
 
 const CarouselSchema = new Schema<Carousel>({
+  movieId: { type: Number, required: true },
   title: { type: String, required: true },
   overview: { type: String, required: true },
   rating: { type: String, required: true },

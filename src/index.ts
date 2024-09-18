@@ -6,11 +6,13 @@ import caraouselRouter from "./routes/Carousel";
 import moviesCollectionRouter from "./routes/moviesCollection";
 import tvShowsCollectionRouter from "./routes/tvShowsCollection";
 require("dotenv").config();
+import cors from "cors";
 
 const app = express();
 const port = process.env.PORT;
 
 app.use(express.json());
+app.use(cors({ origin: true }));
 
 connectToDatabase();
 

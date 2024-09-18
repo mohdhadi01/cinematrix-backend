@@ -15,13 +15,15 @@ export const createCarousel = async (req: Request, res: Response) => {
   try {
     const carousels = req.body;
 
-    const titles = carousels.map((item: any) => item?.title);
+    const movieIds = carousels.map((item: any) => item?.movieId);
 
-    const existingCarousels = await carousel.find({ title: { $in: titles } });
+    const existingCarousels = await carousel.find({
+      movieId: { $in: movieIds },
+    });
 
     const newCarousels = carousels.filter(
       (item: any) =>
-        !existingCarousels.some((existing) => existing.title === item.title)
+        !existingCarousels.some((existing) => existing.movieId === item.movieId)
     );
 
     if (newCarousels.length === 0) {
